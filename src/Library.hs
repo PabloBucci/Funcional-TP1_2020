@@ -93,7 +93,12 @@ charly auto = foldr ($) auto [alfa, bravo]
 -- ●	asumimos que el primer elemento está en la posición 1, el segundo elemento en la posición 2, etc.
 
 -- La cantidad de desgaste es la sumatoria de desgastes de las cubiertas de los autos multiplicada por 10. Ejemplo: 0.2 + 0.5 + 0.6 + 0.1 = 1.4 * 10 = 14. Para determinar si es par o no (y evitar errores de redondeo) es conveniente utilizar la función round.
+desgasteCubiertas :: [Float] -> Float
+desgasteCubiertas [] = 0
+desgasteCubiertas (desgate:desgastes) = desgate + desgasteCubiertas desgastes
 
+desgaste :: [Float] -> Int
+desgaste cubiertas = 10* ( round (desgasteCubiertas cubiertas) )
 -- ==========================================================================================================================================
 -- PUNTO 5: Orden de Reparación
 -- ==========================================================================================================================================
